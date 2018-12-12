@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="row">
+        <div class="col-md-6">
+        <div class="card border-primary" style="width: 100%">
+            <div class="card-header"><h4>Room detail</h4></div>
+              <div class="card-body">
+                  <p>ID: {{ room.pk }}</p>
+                  <p>Name: {{ room.name }} </p>
+                  <p>Capacity: {{ room.capacity }}</p>
+                  <p>Booking info:</p>
+                  {% for booking in room.booking_set.all %}
+                      <p ="center">{{ booking.pub_date }} - {{ booking.comment }}</p>
+                  {% endfor %}
+              </div>
+            </div>
+            <a href="/">Back</a>
+        </div>
+</div>
+
+{% endblock %}
