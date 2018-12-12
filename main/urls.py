@@ -7,4 +7,5 @@ urlpatterns = [
     path('room/new/', RoomCreateView.as_view(), name='room-new'),
     path('room/delete/<int:pk>', RoomDeleteView.as_view(), name='room-delete'),
     path('room/<int:pk>/edit/', RoomUpdateView.as_view(), name='room-edit'),
+    path('room/search', SearchRoomView.as_view(), name='room-search'),
 ]
