@@ -1,3 +1,4 @@
+from django.db.models import Q
 from main.models import Room
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
@@ -42,7 +43,8 @@ class SearchRoomView(ListView):
         query = method_dict.get('q', None) # method_dict['q']
         print(query)
         if query is not None:
-            return Room.objects.filter(capacity__icontains=query)
+            lookups = Q(name__icontains=query) | Q(capacity__icontains=query)
+            return Room.objects.filter(lookups).distinct()
         return Room.objects.all().order_by('-capacity')
         '''
         __icontains = field contains this

@@ -10,7 +10,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Room</th>
                         <th>Users capacity(max)</th>
                         <th>Projector</th>
@@ -22,8 +21,6 @@
 
                   {% for i in room_list %}
                       <tbody>
-                      <tr>
-                          <td> {{ i.pk }}</td>
                           <td><a href="{% url 'room-detail' i.pk %}">{{ i.name }}</td>
                           <td>{{ i.capacity }}</td>
                           <td>{% if i.projector == True %} Yes
