@@ -1,5 +1,5 @@
 from django.db.models import Q
-from main.models import Room
+from main.models import Room, Booking
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
@@ -30,6 +30,13 @@ class RoomCreateView(CreateView):
     model = Room
     fields = '__all__'
     template_name = 'main/room_form.html'
+    success_url = reverse_lazy('room-list')
+
+
+class BookingCreateView(CreateView):
+    model = Booking
+    fields = '__all__'
+    template_name = 'main/booking_form.html'
     success_url = reverse_lazy('room-list')
 
 
