@@ -11,7 +11,7 @@ class Room(models.Model):
 
 
 class Booking(models.Model):
-    pub_date = models.DateField(unique=True)
+    pub_date = models.DateField()
     comment = models.CharField(max_length=256)
     rooms = models.ForeignKey(Room, on_delete=None)
 
