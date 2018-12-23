@@ -1,3 +1,3 @@
 # RBS
 
-Simple room bokking system with Dajngo
+Simple room bokking system (rbs) with Dajngo
