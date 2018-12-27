@@ -28,7 +28,7 @@
                           {%  else %} No</td>{% endif %}
                           <td>Free</td>
                           <td><a href="{% url 'room-edit' i.pk %}"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button>
-                          <td><button type="button" class="btn btn-outline-primary btn-sm">Booking</button></td>
+                          <td><a href="{% url 'booking-new' %}"><button type="button" class="btn btn-outline-primary btn-sm">Booking</button></td>
                           <td><a href="{% url 'room-delete' i.pk %}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
                     </tbody>
                     {% endfor %}
