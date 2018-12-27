@@ -25,7 +25,7 @@ SECRET_KEY = '=%+czpsi02asp#2*zxf4+f60)!s9b%53s-)hp##i8bdo8vqbd='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['194.29.176.67','rbs.marcincdev.pl']
 
 
 # Application definition
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'rbs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'room_reservation',  ## nazwa bazy danych
+        'NAME': 'rbs_db',  ## nazwa bazy danych
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'USER': 'postgres',
         'PASSWORD': 'coderslab',
@@ -122,3 +122,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
