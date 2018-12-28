@@ -4,18 +4,20 @@
     <div class="row">
         <div class="col-md-12">
         <div class="card border-primary" style="width: 100%">
-            <div class="card-header"><h4>Room's booking sytem</h4></div>
+            <div class="card-header"><h4>Room's booking sytem - today is {{ date }}</h4></div>
           <div class="card-body">
 {#        <font size="2">#}
-              <a href="{% url 'room-new' %}"><button type="button" class="btn btn-outline-primary btn-sm" style="width:120px; float: right;">Add new</button></a>
-            <table class="table table-hover">
+              <a href="{% url 'room-new' %}"><button type="button" class="btn btn-outline-primary btn-sm" style="width:120px; float: right;">Add new room</button></a>
+              <a href="{% url 'booking-new' %}"><button type="button" class="btn btn-outline-success btn-sm" style="width:120px; float: right;">Booking room</button></a>
+              <br>
+              <br>
+              <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Room</th>
                         <th>Users capacity(max)</th>
                         <th>Projector</th>
                         <th>Status</th>
-                        <th></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -26,9 +28,11 @@
                           <td>{{ i.capacity }}</td>
                           <td>{% if i.projector == True %} Yes
                           {%  else %} No</td>{% endif %}
-                          <td>Free</td>
+                          {% for b in i.booking_set.all %}
+                              {% if b.pub_date == date %} <td>Booked</td>
+                              {% else %} <td>Free</td>{% endif %}
+                          {% endfor %}
                           <td><a href="{% url 'room-edit' i.pk %}"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button>
-                          <td><a href="{% url 'booking-new' %}"><button type="button" class="btn btn-outline-primary btn-sm">Booking</button></td>
                           <td><a href="{% url 'room-delete' i.pk %}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
                     </tbody>
                     {% endfor %}

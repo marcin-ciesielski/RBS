@@ -12,12 +12,13 @@
               <div class="card-body">
                 <form method="POST" class="room-form">{% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="save btn btn-default">Save</button>
+                    <button type="submit" class="btn btn-outline-primary btn-sm">Save</button>
                 </form>
               </div>
             </div>
+        <a href="/">Back</a>
         </div>
         </div>
-</div>
+
 
 {% endblock %}
