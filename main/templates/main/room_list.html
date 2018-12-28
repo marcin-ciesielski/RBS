@@ -32,6 +32,7 @@
                               {% if b.pub_date == date %} <td>Booked</td>
                               {% else %} <td>Free</td>{% endif %}
                           {% endfor %}
+
                           <td><a href="{% url 'room-edit' i.pk %}"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button>
                           <td><a href="{% url 'room-delete' i.pk %}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
                     </tbody>
