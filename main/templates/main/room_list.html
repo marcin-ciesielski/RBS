@@ -23,20 +23,24 @@
                 </thead>
 
                   {% for i in room_list %}
+                      Room {{ i.name }}:
+                      {% for b in i.booking_set.all %} Bokking {{ b.comment }}, {{ b.rooms_id }}
+
                       <tbody>
                           <td><a href="{% url 'room-detail' i.pk %}">{{ i.name }}</td>
                           <td>{{ i.capacity }}</td>
                           <td>{% if i.projector == True %} Yes
                           {%  else %} No</td>{% endif %}
                           {% for b in i.booking_set.all %}
-                              {% if b.pub_date == date %} <td>Booked</td>
-                              {% else %} <td>Free</td>{% endif %}
+                                {% if i.id != b.rooms_id %}<td>Free</td>
+                                {% else %} <td>Reserved</td>{% endif %}
                           {% endfor %}
 
                           <td><a href="{% url 'room-edit' i.pk %}"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button>
                           <td><a href="{% url 'room-delete' i.pk %}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
                     </tbody>
                     {% endfor %}
+                  {% endfor %}
             </table>
           </div>
         </div>
