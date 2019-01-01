@@ -4,11 +4,30 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.views import View
 from django.shortcuts import render, get_object_or_404
-import datetime
+from datetime import date
 
-class RoomListView(ListView):
+
+class RoomListView(ListView):  # Generic list view
     model = Room
     ordering = ['-capacity']
+
+
+class MyRoomListView(View):
+    template_name = 'main/room_list.html'
+
+    def get(self, request):
+        room_list = Room.objects.all().order_by('-capacity')
+        available = ''
+        today = (date.today(),)
+        today_str = date.today().strftime("%Y-%m-%d")
+        for room in room_list:
+            if today in room.booking_set.filter(date__gte=date.today()).values_list('date'):
+                available = 'Booked'
+            else:
+                available = 'Free'
+            room.available = available
+        return render(request, self.template_name, locals())
+
 
 
 # class RoomListView(ListView):

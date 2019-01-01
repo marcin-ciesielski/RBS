@@ -10,7 +10,7 @@
                   <p>Capacity: {{ room.capacity }}</p>
                   <p>Booking info:</p>
                   {% for booking in room.booking_set.all %}
-                      <p ="center">{{ booking.pub_date }} - {{ booking.comment }}</p>
+                      <p ="center">{{ booking.date }} - {{ booking.comment }}</p>
                   {% endfor %}
               </div>
             </div>

@@ -2,7 +2,7 @@ from django.urls import path, include
 from main.views import *
 
 urlpatterns = [
-    path('', RoomListView.as_view(), name='room-list'),
+    path('', MyRoomListView.as_view(), name='room-list'),
     path('room/detail/<int:pk>', RoomDetailView.as_view(), name='room-detail'),
     path('room/new/', RoomCreateView.as_view(), name='room-new'),
     path('room/delete/<int:pk>', RoomDeleteView.as_view(), name='room-delete'),
