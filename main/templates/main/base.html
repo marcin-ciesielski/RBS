@@ -7,7 +7,18 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/sandstone/bootstrap.min.css">
-
+    <script type="text/javascript">
+        function showDate(){
+            var Today = new Date();
+            var Month = Today.getMonth() + 1;
+            var Day = Today.getDate();
+            var Year = Today.getFullYear();
+                if(Year <= 99)    Year += 1900;
+                if (Month < 10) Month = '0' + Month;
+                if (Day < 10) Day = '0' + Day;
+            return  Year + "-" + Month + "-" + Day;
+        }
+    </script>
     <title>{% block title %} {% endblock %}</title>
 </head>
 

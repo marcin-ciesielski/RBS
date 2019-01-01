@@ -11,17 +11,32 @@ class RoomListView(ListView):
     ordering = ['-capacity']
 
 
-class MyRoomListView(View):
-    template_name = 'main/room_list.html'
-    queryset = Room.objects.all()
-    date = datetime.datetime.now().date()
+# class RoomListView(ListView):
+#     template_name = 'main/room_list.html'
+#     queryset = Room.objects.all()
+    
 
-    def get(self, request, *args, **kwargs):
-        context = {
-            'room_list': self.queryset,
-            'date': self.date, # date.strftime('%Y-%m-%d'),
-        }
-        return render(request, self.template_name, context)
+
+#     def get_queryset(self):
+#         # context = {
+#         #     'room_list': self.queryset,
+#         #     '123': self.date
+#         #     }
+#         return self.queryset
+
+#     def get(self, request, *args, **kwargs):
+#         date = datetime.datetime.now().date()
+#         context = { 'room_date': date,
+#                     'room_list': self.get_queryset()}
+#         return render(request, self.template_name, context)
+
+
+#     # def get(self, request, *args, **kwargs):
+#     #     context = {
+#     #         'room_list': self.get_queryset(),
+#     #         'date': self.date,
+#     #     }
+#     #     return render(request, self.template_name, context)
 
 
 class RoomDetailView(DetailView):
