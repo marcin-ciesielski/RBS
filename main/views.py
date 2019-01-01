@@ -18,44 +18,14 @@ class MyRoomListView(View):
     def get(self, request):
         room_list = Room.objects.all().order_by('-capacity')
         available = ''
-        today = (date.today(),)
         today_str = date.today().strftime("%Y-%m-%d")
         for room in room_list:
-            if today in room.booking_set.filter(date__gte=date.today()).values_list('date'):
+            if (date.today(),) in room.booking_set.filter(date__gte=date.today()).values_list('date'):
                 available = 'Booked'
             else:
                 available = 'Free'
             room.available = available
         return render(request, self.template_name, locals())
-
-
-
-# class RoomListView(ListView):
-#     template_name = 'main/room_list.html'
-#     queryset = Room.objects.all()
-    
-
-
-#     def get_queryset(self):
-#         # context = {
-#         #     'room_list': self.queryset,
-#         #     '123': self.date
-#         #     }
-#         return self.queryset
-
-#     def get(self, request, *args, **kwargs):
-#         date = datetime.datetime.now().date()
-#         context = { 'room_date': date,
-#                     'room_list': self.get_queryset()}
-#         return render(request, self.template_name, context)
-
-
-#     # def get(self, request, *args, **kwargs):
-#     #     context = {
-#     #         'room_list': self.get_queryset(),
-#     #         'date': self.date,
-#     #     }
-#     #     return render(request, self.template_name, context)
 
 
 class RoomDetailView(DetailView):
