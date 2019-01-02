@@ -11,23 +11,16 @@ class CalendarView(ListView):
     model = Booking
     template_name = 'main/calendar.html'
 
-    #date = datetime.datetime.now().date()
 
-    # def get(self, request, *args, **kwargs):
-    #     booking = Booking.objects.all()
-    #     count = booking.count()
-    #     return render(request, self.template_name, locals())
+# class RoomListView(ListView):  # Generic list view
+#     model = Room
+#     ordering = ['-capacity']
 
 
-class RoomListView(ListView):  # Generic list view
-    model = Room
-    ordering = ['-capacity']
-
-
-class MyRoomListView(View):
+class MyRoomListView(View):  
     template_name = 'main/room_list.html'
 
-    def get(self, request):
+    def get(self, request):  # That the solution was inspired by the Igor Sulim -> https://github.com/isulim/Warsztat_3
         room_list = Room.objects.all().order_by('-capacity')
         available = ''
         today_str = date.today().strftime("%Y-%m-%d")
