@@ -7,6 +7,18 @@ from django.shortcuts import render, get_object_or_404
 from datetime import date
 
 
+class CalendarView(ListView):
+    model = Booking
+    template_name = 'main/calendar.html'
+
+    #date = datetime.datetime.now().date()
+
+    # def get(self, request, *args, **kwargs):
+    #     booking = Booking.objects.all()
+    #     count = booking.count()
+    #     return render(request, self.template_name, locals())
+
+
 class RoomListView(ListView):  # Generic list view
     model = Room
     ordering = ['-capacity']

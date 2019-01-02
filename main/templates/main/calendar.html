@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    RBS Calendar
+{% endblock %}
+
+{% block content %}
+
+<div class="card border-primary" style="width: 100%">
+  <div class="card-header"><h4>Room's booking system calendar</h4></div>
+  <div class="card-body">
+        <div id='calendar'></div>
+        <script>
+
+            $(document).ready(function() {
+
+                $('#calendar').fullCalendar({
+                        header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay,listMonth'
+                    },
+                    locale: 'en',
+                    //defaultDate: '2017-05-12',
+                    buttonIcons: false, // show the prev/next text
+                    weekNumbers: true,
+                    navLinks: true, // can click day/week names to navigate views
+                    editable: true,
+                    eventLimit: true,
+
+                    // defaultDate: '2016-07-19',
+                    // editable: true,
+                    // eventLimit: true, // allow "more" link when too many events
+                    events: [
+                        {% for event in booking_list %}
+                        {
+                            title: "Room {{ event.rooms}}",
+                            start: '{{ event.date|date:"Y-m-d" }}',
+                            end: '{{ event.date|date:"Y-m-d" }}',
+                            url: '{% url 'room-detail' event.rooms.pk %}',
+                        },
+                        {% endfor %}
+
+                    ]
+                });
+
+            });
+
+        </script>
+        <style type='text/css'>
+            #calendar {
+                width: 900px;
+                margin: 0 auto;
+            }
+
+        </style>
+  </div>
+</div>
+{% endblock %}
