@@ -19,7 +19,7 @@ mkdir rbs
 cd rbs
 git clone https://github.com/marcincdev/RBS.git
 ```
-Create venv and install package 
+Create venv and install packages 
 ```
 virtualenv -p pytho3 venv
 source venv/bin/activate
@@ -29,6 +29,6 @@ Run RBS django applications
 ```
 python manage.py makemigraion
 python manage.py migrate
-python manage.py mrunserver
+python manage.py runserver
 ```
 
