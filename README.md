@@ -17,7 +17,7 @@ Create directory and clone repository
 ```
 mkdir rbs
 cd rbs
-git clone https://github.com/marcincdev/RBS.git
+git clone https://github.com/marcincdev/RBS.git .
 ```
 Create venv and install packages 
 ```
