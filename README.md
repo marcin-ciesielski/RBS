@@ -2,7 +2,7 @@
 
 Simple room bokking system (rbs) with Dajngo
 
-Demo http://rbs.marcincdev.pl
+[Demo] (http://rbs.marcincdev.pl)
 
 ## Getting started
 
