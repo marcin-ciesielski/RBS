@@ -27,7 +27,7 @@ pip install -r requirements.txt
 ```
 Run RBS django applications
 ```
-python manage.py makemigraions
+python manage.py makemigraions main
 python manage.py migrate
 python manage.py runserver
 ```
