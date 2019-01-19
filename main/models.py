@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 
 class Room(models.Model):
     name = models.CharField(max_length=64)
@@ -11,7 +11,7 @@ class Room(models.Model):
 
 
 class Booking(models.Model):
-    date = models.DateField()
+    date = models.DateField(default=datetime.now)
     comment = models.CharField(max_length=256)
     rooms = models.ForeignKey(Room, on_delete=models.CASCADE)
 
